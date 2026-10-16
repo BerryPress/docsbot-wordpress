@@ -168,7 +168,7 @@ final class DocsBot_Widget {
 			return new WP_Error( 'docsbot_membership_required', __( 'An eligible membership is required for this chat.', 'docsbot' ), array( 'status' => 403 ) );
 		}
 
-		$identify = $this->build_identify( $user_id, $settings );
+		$identify = apply_filters( 'docsbot_widget_identify', $this->build_identify( $user_id, $settings ), $user_id, $settings );
 		$theme    = in_array(
 			$settings['theme'],
 			array( 'auto', 'light', 'dark' ),
